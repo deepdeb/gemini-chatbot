@@ -7,7 +7,8 @@ import backend
 # Streamed response emulator
 def response_generator(prompt):
     response = backend.GenerateResponse(prompt)
-    for word in response.split():
+    replaced_response = response.replace('$', '\$')
+    for word in replaced_response.split():
         yield word + " "
         time.sleep(0.05)
 
